@@ -160,22 +160,22 @@ namespace VrSharp.SvrTexture
                 {
                     if (pixelFormat == SvrPixelFormat.Rgb5a3)
                     {
-                        dataFormat = SvrDataFormat.Index4Rgb5a3Square;
+                        this.dataFormat = SvrDataFormat.Index4Rgb5a3Square;
                     }
                     else
                     {
-                        dataFormat = SvrDataFormat.Index4Argb8Square;
+                        this.dataFormat = SvrDataFormat.Index4Argb8Square;
                     }
                 }
                 else // Rectangular texture
                 {
                     if (pixelFormat == SvrPixelFormat.Rgb5a3)
                     {
-                        dataFormat = SvrDataFormat.Index4Rgb5a3Rectangle;
+                        this.dataFormat = SvrDataFormat.Index4Rgb5a3Rectangle;
                     }
                     else
                     {
-                        dataFormat = SvrDataFormat.Index4Argb8Rectangle;
+                        this.dataFormat = SvrDataFormat.Index4Argb8Rectangle;
                     }
                 }
             }
@@ -187,22 +187,22 @@ namespace VrSharp.SvrTexture
                 {
                     if (pixelFormat == SvrPixelFormat.Rgb5a3)
                     {
-                        dataFormat = SvrDataFormat.Index8Rgb5a3Square;
+                        this.dataFormat = SvrDataFormat.Index8Rgb5a3Square;
                     }
                     else
                     {
-                        dataFormat = SvrDataFormat.Index8Argb8Square;
+                        this.dataFormat = SvrDataFormat.Index8Argb8Square;
                     }
                 }
                 else // Rectangular texture
                 {
                     if (pixelFormat == SvrPixelFormat.Rgb5a3)
                     {
-                        dataFormat = SvrDataFormat.Index8Rgb5a3Rectangle;
+                        this.dataFormat = SvrDataFormat.Index8Rgb5a3Rectangle;
                     }
                     else
                     {
-                        dataFormat = SvrDataFormat.Index8Argb8Rectangle;
+                        this.dataFormat = SvrDataFormat.Index8Argb8Rectangle;
                     }
                 }
             }
