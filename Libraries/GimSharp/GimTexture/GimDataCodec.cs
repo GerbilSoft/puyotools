@@ -362,7 +362,7 @@ namespace GimSharp
                 case GimDataFormat.Argb1555:
                     return new Argb1555();
                 case GimDataFormat.Argb4444:
-                    return new Argb8888();
+                    return new Argb4444();
                 case GimDataFormat.Argb8888:
                     return new Argb8888();
                 case GimDataFormat.Index4:
