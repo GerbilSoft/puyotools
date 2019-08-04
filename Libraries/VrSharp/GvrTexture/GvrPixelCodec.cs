@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace VrSharp.GvrTexture
 {
@@ -29,7 +29,7 @@ namespace VrSharp.GvrTexture
             public override void EncodePixel(byte[] source, int sourceIndex, byte[] destination, int destinationIndex)
             {
                 destination[destinationIndex + 0] = source[sourceIndex + 3];
-                destination[destinationIndex + 0] = (byte)((0.30 * source[sourceIndex + 2]) + (0.59 * source[sourceIndex + 1]) + (0.11 * source[sourceIndex + 0]));
+                destination[destinationIndex + 1] = (byte)((0.30 * source[sourceIndex + 2]) + (0.59 * source[sourceIndex + 1]) + (0.11 * source[sourceIndex + 0]));
             }
         }
         #endregion
