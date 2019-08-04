@@ -797,12 +797,7 @@ namespace VrSharp.GvrTexture
             {
                 int offset = 0;
                 byte[] output = new byte[width * height / 2];
-
-                byte[] subBlock;
-                byte[] result;
-
-                result = new byte[32];
-                subBlock = new byte[64];
+                byte[] subBlock = new byte[64];
 
                 for (int y = 0; y < height; y += 8)
                 {
