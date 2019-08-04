@@ -255,7 +255,7 @@ namespace PuyoTools.Modules.Archive
             EventHandler handler = FileAdded;
             if (handler != null)
             {
-                FileAdded(this, e);
+                handler(this, e);
             }
         }
     }
