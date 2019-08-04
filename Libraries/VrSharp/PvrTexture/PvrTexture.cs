@@ -162,12 +162,13 @@ namespace VrSharp.PvrTexture
 
             // Set the number of palette entries
             // The number in a Small Vq encoded texture various based on its size
+            // NOTE: Differs for SmallVq vs. SmallVqMipmaps.
             paletteEntries = dataCodec.PaletteEntries;
-            if (dataFormat == PvrDataFormat.SmallVq || dataFormat == PvrDataFormat.SmallVqMipmaps)
+            if (dataFormat == PvrDataFormat.SmallVq)
             {
                 if (textureWidth <= 16)
                 {
-                    paletteEntries = 16*4;
+                    paletteEntries = 8*4;
                 }
                 else if (textureWidth <= 32)
                 {
@@ -182,6 +183,25 @@ namespace VrSharp.PvrTexture
                     paletteEntries = 256*4;
                 }
             }
+            else if (dataFormat == PvrDataFormat.SmallVqMipmaps)
+            {
+                if (textureWidth <= 16)
+                {
+                    paletteEntries = 16*4;
+                }
+                else if (textureWidth <= 32)
+                {
+                    paletteEntries = 64*4;
+                }
+                else if (textureWidth <= 64)
+                {
+                    paletteEntries = 128*4;
+                }
+                else
+                {
+                    paletteEntries = 256*4;
+                }
+            }  
 
             // Set the palette and data offsets
             if (!canDecode || paletteEntries == 0 || dataCodec.NeedsExternalPalette)
