@@ -167,19 +167,19 @@ namespace VrSharp.PvrTexture
             {
                 if (textureWidth <= 16)
                 {
-                    paletteEntries = 64; // Actually 16
+                    paletteEntries = 8*4;
                 }
                 else if (textureWidth <= 32)
                 {
-                    paletteEntries = 256; // Actually 64
+                    paletteEntries = 32*4;
                 }
                 else if (textureWidth <= 64)
                 {
-                    paletteEntries = 512; // Actually 128
+                    paletteEntries = 128*4;
                 }
                 else
                 {
-                    paletteEntries = 1024; // Actually 256
+                    paletteEntries = 256*4;
                 }
             }
 
