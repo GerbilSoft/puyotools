@@ -68,7 +68,7 @@ namespace VrSharp.PvrTexture
                         {
                             bool match = true;
 
-                            for (int i = 0; i < PixelSize && match; i++)
+                            for (int i = 0; i < PixelSize; i++)
                             {
                                 if (input[SourcePointer + i] != pixel[i])
                                 {
