@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace VrSharp.GvrTexture
 {
@@ -51,11 +51,14 @@ namespace VrSharp.GvrTexture
             public override void DecodePixel(byte[] source, int sourceIndex, byte[] destination, int destinationIndex)
             {
                 ushort pixel = PTMethods.ToUInt16BE(source, sourceIndex);
+                byte r = (byte)((pixel >> 11) & 0x1F);
+                byte g = (byte)((pixel >>  5) & 0x3F);
+                byte b = (byte)((pixel >>  0) & 0x1F);
 
                 destination[destinationIndex + 3] = 0xFF;
-                destination[destinationIndex + 2] = (byte)(((pixel >> 11) & 0x1F) * 0xFF / 0x1F);
-                destination[destinationIndex + 1] = (byte)(((pixel >> 5)  & 0x3F) * 0xFF / 0x3F);
-                destination[destinationIndex + 0] = (byte)(((pixel >> 0)  & 0x1F) * 0xFF / 0x1F);
+                destination[destinationIndex + 2] = (byte)((r << 3) | (r >> 2));
+                destination[destinationIndex + 1] = (byte)((g << 2) | (g >> 4));
+                destination[destinationIndex + 0] = (byte)((b << 3) | (b >> 2));
             }
 
             public override void EncodePixel(byte[] source, int sourceIndex, byte[] destination, int destinationIndex)
@@ -91,17 +94,24 @@ namespace VrSharp.GvrTexture
 
                 if ((pixel & 0x8000) != 0) // Rgb555
                 {
+                    byte r = (byte)((pixel >> 10) & 0x1F);
+                    byte g = (byte)((pixel >> 5) & 0x1F);
+                    byte b = (byte)((pixel >> 0) & 0x1F);
                     destination[destinationIndex + 3] = 0xFF;
-                    destination[destinationIndex + 2] = (byte)(((pixel >> 10) & 0x1F) * 0xFF / 0x1F);
-                    destination[destinationIndex + 1] = (byte)(((pixel >> 5)  & 0x1F) * 0xFF / 0x1F);
-                    destination[destinationIndex + 0] = (byte)(((pixel >> 0)  & 0x1F) * 0xFF / 0x1F);
+                    destination[destinationIndex + 2] = (byte)((r << 3) | (r >> 2));
+                    destination[destinationIndex + 1] = (byte)((g << 3) | (g >> 2));
+                    destination[destinationIndex + 0] = (byte)((b << 3) | (b >> 2));
                 }
                 else // Argb3444
                 {
-                    destination[destinationIndex + 3] = (byte)(((pixel >> 12) & 0x07) * 0xFF / 0x07);
-                    destination[destinationIndex + 2] = (byte)(((pixel >> 8)  & 0x0F) * 0xFF / 0x0F);
-                    destination[destinationIndex + 1] = (byte)(((pixel >> 4)  & 0x0F) * 0xFF / 0x0F);
-                    destination[destinationIndex + 0] = (byte)(((pixel >> 0)  & 0x0F) * 0xFF / 0x0F);
+                    byte a = (byte)((pixel >> 12) & 0x07);
+                    byte r = (byte)((pixel >> 8) & 0x0F);
+                    byte g = (byte)((pixel >> 4) & 0x0F);
+                    byte b = (byte)((pixel >> 0) & 0x0F);
+                    destination[destinationIndex + 3] = (byte)((a << 5) | (a << 2) | (a >> 1));
+                    destination[destinationIndex + 2] = (byte)((r << 4) | r);
+                    destination[destinationIndex + 1] = (byte)((g << 4) | g);
+                    destination[destinationIndex + 0] = (byte)((b << 4) | b);
                 }
             }
 
